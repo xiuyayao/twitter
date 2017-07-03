@@ -26,30 +26,34 @@ class SignUpViewController: UIViewController {
         if emailLabel.text!.isEmpty || usernameLabel.text!.isEmpty || passwordLabel.text!.isEmpty {
             self.present(self.signUpAlertController, animated: true)
         }
+        else {
+            // initialize a user object
+            let newUser = PFUser()
         
-        // initialize a user object
-        let newUser = PFUser()
+            // set user properties
+            newUser.username = usernameLabel.text
+            newUser.email = emailLabel.text
+            newUser.password = passwordLabel.text
         
-        // set user properties
-        newUser.username = usernameLabel.text
-        newUser.email = emailLabel.text
-        newUser.password = passwordLabel.text
-        
-        // call sign up function on the object
-        newUser.signUpInBackground { (success: Bool, error: Error?) in
+            // call sign up function on the object
+            newUser.signUpInBackground { (success: Bool, error: Error?) in
             
-            if let error = error {
-                self.present(self.signUpAlertController, animated: true)
-                print(error.localizedDescription)
-            } else {
-                print("User registered successfully")
-                // clear text labels
-                self.emailLabel.text = ""
-                self.usernameLabel.text = ""
-                self.passwordLabel.text = ""
+                if let error = error {
+                    self.present(self.signUpAlertController, animated: true)
+                    self.emailLabel.text = ""
+                    self.usernameLabel.text = ""
+                    self.passwordLabel.text = ""
+                    print(error.localizedDescription)
+                } else {
+                    print("User registered successfully")
+                    // clear text labels
+                    self.emailLabel.text = ""
+                    self.usernameLabel.text = ""
+                    self.passwordLabel.text = ""
                 
-                // display view controller that needs to shown after successful login
-                self.performSegue(withIdentifier: "signUpSegue", sender: nil)
+                    // display view controller that needs to shown after successful login
+                    self.performSegue(withIdentifier: "signUpSegue", sender: nil)
+                }
             }
         }
     }

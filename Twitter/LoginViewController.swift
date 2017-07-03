@@ -24,22 +24,26 @@ class LoginViewController: UIViewController {
         if usernameLabel.text!.isEmpty || passwordLabel.text!.isEmpty {
             self.present(self.loginAlertController, animated: true)
         }
+        else {
+            let username = usernameLabel.text ?? ""
+            let password = passwordLabel.text ?? ""
         
-        let username = usernameLabel.text ?? ""
-        let password = passwordLabel.text ?? ""
-        
-        PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
+            PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
             
-            if let error = error {
-                print("User log in failed: \(error.localizedDescription)")
-            } else {
-                print("User logged in successfully")
-                // clear text labels
-                self.usernameLabel.text = ""
-                self.passwordLabel.text = ""
+                if let error = error {
+                    self.present(self.loginAlertController, animated: true)
+                    self.usernameLabel.text = ""
+                    self.passwordLabel.text = ""
+                    print("User log in failed: \(error.localizedDescription)")
+                } else {
+                    print("User logged in successfully")
+                    // clear text labels
+                    self.usernameLabel.text = ""
+                    self.passwordLabel.text = ""
                 
-                // display view controller that needs to shown after successful login
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                    // display view controller that needs to shown after successful login
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                }
             }
         }
     }
