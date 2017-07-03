@@ -13,7 +13,7 @@ import ParseUI
 class ProfileViewController: UIViewController {
     
     @IBAction func logoutUser(_ sender: UIButton) {
-                
+        
         PFUser.logOutInBackground { (error: Error?) in
         }
         
@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "InitialViewController")
         present(initialViewController, animated: false)  {
-            
+            // nothing here
         }
     }
 
