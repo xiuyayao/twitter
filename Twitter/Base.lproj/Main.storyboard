@@ -13,7 +13,7 @@
         <!--Initial View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="InitialViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialViewController" id="BYZ-38-t0r" customClass="InitialViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="382" y="3045"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="ej0-Ig-0ua">
             <objects>
-                <viewController id="SEi-RH-UeP" sceneMemberID="viewController">
+                <viewController id="SEi-RH-UeP" customClass="ProfileViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LnT-A5-e5E"/>
                         <viewControllerLayoutGuide type="bottom" id="SkJ-wq-ux4"/>
@@ -236,7 +236,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="UuR-UR-wpO"/>
+                    <navigationItem key="navigationItem" id="UuR-UR-wpO">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="x3N-al-wKj">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mmO-y5-jbf">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Log out"/>
+                                <connections>
+                                    <action selector="logoutUser:" destination="SEi-RH-UeP" eventType="touchUpInside" id="FQg-NV-m0t"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hho-nH-aZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -264,7 +276,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="GFK-kI-Ptf">
             <objects>
-                <tabBarController id="wYW-dM-Fiw" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="wYW-dM-Fiw" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="HbQ-08-OLq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -386,11 +398,11 @@
             </objects>
             <point key="canvasLocation" x="-322" y="735"/>
         </scene>
-        <!--Item 1-->
+        <!--Home-->
         <scene sceneID="iyc-ve-XlN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xP7-yM-j9G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Co4-W6-Qkd"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home-icon" id="Co4-W6-Qkd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nd4-5U-Z8d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -405,11 +417,11 @@
             </objects>
             <point key="canvasLocation" x="-1026" y="2310"/>
         </scene>
-        <!--Item 2-->
+        <!--Notifications-->
         <scene sceneID="0eK-7o-PV0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ERC-Qi-Ayr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="LCZ-VA-Avg"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" image="notification-icon" id="LCZ-VA-Avg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ezv-xU-Jkn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -424,11 +436,11 @@
             </objects>
             <point key="canvasLocation" x="-322" y="2310"/>
         </scene>
-        <!--Item-->
+        <!--Messages-->
         <scene sceneID="E3j-o7-xRq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="paq-0x-u62" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Uqi-WH-Vyb"/>
+                    <tabBarItem key="tabBarItem" title="Messages" image="message-icon" id="Uqi-WH-Vyb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6hA-fn-g9A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -443,11 +455,11 @@
             </objects>
             <point key="canvasLocation" x="382" y="2310"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="nDC-Ve-vDs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aqC-aR-rhQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="MjM-YN-oea"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-Icon" id="MjM-YN-oea"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tzo-a0-s1j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -466,6 +478,10 @@
     <resources>
         <image name="TwitterLogo" width="120" height="120"/>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="home-icon" width="30" height="30"/>
+        <image name="message-icon" width="30" height="30"/>
+        <image name="notification-icon" width="30" height="30"/>
+        <image name="profile-Icon" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Zut-AR-bDh"/>
