@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Initialize Parse
+        // Set applicationId and server based on the values in the Heroku settings
+        // clientKey is not used on Parse open source unless explicitly configured
+        // Link app with Heroku installation of Parse
+        Parse.initialize(
+            with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "Twitter"
+                configuration.clientKey = "asdbviakansvdjl"  // originally set to nil assuming you have not set clientKey
+                configuration.server = "https://radiant-dusk-83923.herokuapp.com/parse"
+            })
+        )
+        
+        /*
+        // check if user is logged in.
+        if let currentUser = PFUser.current() {
+            print("Welcome back \(currentUser.username!) 😀")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+            // TabBarController is storyboard ID
+            window?.rootViewController = tabBarController
+        }
+        */
         return true
     }
 
